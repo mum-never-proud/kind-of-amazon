@@ -1,0 +1,12 @@
+@media (max-width: 1023px) {
+  .products {
+    justify-content: space-between !important;
+  }
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 50px;
+}

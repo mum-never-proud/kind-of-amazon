@@ -1,0 +1,16 @@
+.checkout {
+  display: flex;
+  gap: 20px;
+}
+
+.checkout--form {
+  flex: 30;
+}
+
+.checkout--items {
+  flex: 70;
+}
+
+.checkout--items > .product-card {
+  margin-bottom: 20px;
+}

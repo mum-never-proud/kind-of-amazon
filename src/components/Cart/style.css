@@ -1,0 +1,16 @@
+.cart--items {
+  display: flex;
+  gap: 20px;
+}
+
+.cart--items-info {
+  flex: 70;
+}
+
+.cart--items-info > .product-card {
+  margin-bottom: 20px;
+}
+
+.cart--form {
+  flex: 30;
+}

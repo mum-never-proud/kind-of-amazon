@@ -1,0 +1,47 @@
+.nav-bar {
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.nav-bar--anchor.btn-link,
+.nav-bar--anchor.btn-link:hover,
+.nav-bar--anchor.btn-link:focus,
+.nav-bar--anchor.btn-link:active {
+  color: #fff;
+}
+
+.nav-bar > * {
+  height: 60px;
+}
+
+.nav-bar--logo, .nav-bar--orders {
+  flex: 6;
+}
+
+.nav-bar--cart {
+  flex: 4;
+}
+
+.nav-bar--cart svg, .nav-bar--logo svg {
+  font-size: 28px;
+}
+
+.nav-bar--user-details {
+  flex: 8;
+}
+
+.nav-bar--search {
+  flex: 60;
+  height: 30px;
+}
+
+.nav-bar--search svg {
+  position: relative;
+  z-index: 1;
+  font-size: 18px;
+}
+
+.nav-bar--logo {
+  font-size: 38px;
+}

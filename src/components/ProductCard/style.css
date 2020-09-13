@@ -1,0 +1,30 @@
+@media (max-width: 1023px) {
+  .product-card {
+    flex: 0 40% !important;
+  }
+}
+
+.product-card {
+  flex: 0 47%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #e1e1e1;
+  padding: 15px;
+}
+
+.product-card--secondary {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.product-card--rating {
+  color: #ffce00;
+}
+
+.product-card--count {
+  width: 75px !important;
+}
+
+.product-card--image > img {
+  max-height: 200px;
+}

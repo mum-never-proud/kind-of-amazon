@@ -1,0 +1,25 @@
+.order--info {
+  margin-bottom: 22px;
+}
+
+.order--products-info {
+  margin: 0;
+}
+
+.order--products-info > li {
+  display: flex;
+}
+
+.order--products-info > li img {
+  height: 75px;
+}
+
+.order--info-head {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.ghost {
+  font-size: 48px;
+}

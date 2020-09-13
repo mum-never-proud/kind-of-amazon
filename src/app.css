@@ -1,0 +1,100 @@
+@import url(//db.onlinewebfonts.com/c/157c6cc36dd65b1b2adc9e7f3329c761?family=Amazon+Ember);
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html, body {
+  font-family: "Amazon Ember", Helvetica, Arial, sans-;
+}
+
+.amz-input-text {
+  height: 31px;
+  border: 1px solid #a6a6a6;
+  border-top-color: #949494;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.5), 0 1px 0 rgba(0,0,0,.07) inset;
+  outline: 0;
+}
+
+.amz-input-text:focus {
+  border-color: #e77600;
+  box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+  outline: 0;
+}
+
+.amz-text-xs {
+  font-size: 13px;
+}
+
+.amz-button-primary,
+.amz-button-primary:active,
+.amz-button-primary:focus,
+.amz-button-primary:hover {
+  background-color: #f0c14b !important;
+  border-color: #a88734 #9c7e31 #846a29 !important;
+  color: #111 !important;
+  outline: 0;
+}
+
+.amz-button-secondary,
+.amz-button-secondary:active,
+.amz-button-secondary:focus,
+.amz-button-secondary:hover {
+  background-color: #e7e9ec;
+  border-color: #adb1b8 #a2a6ac #8d9096;
+  color: #111;
+  outline: 0;
+}
+
+.amz-button-secondary:hover, .amz-button-secondary:hover:active {
+  border-color: #a2a6ac #979aa1 #82858a;
+}
+
+.amz-button-primary:focus {
+  border-color: #e77600;
+  box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
+}
+
+.amz-form {
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  padding: 20px 26px;
+}
+
+.amz-form--sm {
+  padding: 14px 18px;
+  background-color: #f3f3f3;
+}
+
+.toast {
+  position: absolute;
+}
+
+.toast-top-right {
+  right: 15px;
+  top: 15px;
+}
+
+.nav-bar {
+  background-color: #131921;
+  color: #fff;
+}
+
+.w-350 {
+  width: 350px;
+}
+
+.h-60 {
+  height: 60px;
+}
+
+.color-grey {
+  color: #ccc
+}
+
+.awssld__next, .awssld__prev {
+  top: 100px !important;
+}

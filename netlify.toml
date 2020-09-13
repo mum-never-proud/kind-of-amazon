@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build-serverless"
+  publish = "dist"
+  functions = "serverless"
+[dev]
+  functions = "serverless"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
