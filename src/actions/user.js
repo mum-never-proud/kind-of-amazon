@@ -5,7 +5,6 @@ import {
   authenticateUserSuccess,
   registerUserInProgress,
   registerUserFailed,
-  registerUserSuccess,
   signOutUserCompleted,
   orderConfirmed,
 } from 'actionCreators/user';
@@ -25,7 +24,7 @@ export const signOutUser = (dispatch) => () => {
 export const registerUser = (dispatch) => (userDetails) => {
   dispatch(registerUserInProgress());
   signUp(userDetails)
-    .then((user) => dispatch(registerUserSuccess(user)))
+    .then(() => authenticateUser(dispatch)(userDetails))
     .catch((err) => dispatch(registerUserFailed(err)));
 };
 

@@ -1,5 +1,27 @@
 @import url(//db.onlinewebfonts.com/c/157c6cc36dd65b1b2adc9e7f3329c761?family=Amazon+Ember);
 
+@media (max-width: 1023px) {
+  .cart--items-info, .cart--form {
+    flex: 50;
+  }
+
+  .amz-button-primary {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .checkout {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 1023px) {
+  .products {
+    justify-content: space-between !important;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

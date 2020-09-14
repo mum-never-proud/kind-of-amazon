@@ -4,7 +4,6 @@ import {
   AUTHENTICATE_USER_SUCCESS,
   REGISTER_USER_IN_PROGRESS,
   REGISTER_USER_FAILED,
-  REGISTER_USER_SUCCESS,
   SIGN_OUT,
   ORDER_CONFIRMED,
 } from 'actionTypes';
@@ -31,7 +30,6 @@ const userReducer = (state, action) => {
         ...action.payload,
       };
     case AUTHENTICATE_USER_SUCCESS:
-    case REGISTER_USER_SUCCESS:
       return {
         ...state,
         isLoading: false,

@@ -13,7 +13,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import fetchPaymentToken from 'services/payment';
 
 const CheckoutForm = ({
-  amount, currency, selectedProducts, onOrderComplete,
+  amount, currency, selectedProducts, onOrderComplete, userID,
 }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -57,8 +57,7 @@ const CheckoutForm = ({
         orderID,
         products: selectedProducts,
         total: amount,
-        deliveryBy: new Date(new Date().getTime() + 5 * 60000),
-      }))
+      }, userID))
       .then((order) => {
         setIsPaymentConfirmed(true);
         onOrderComplete({ ...order, total: amount });
@@ -123,6 +122,7 @@ CheckoutForm.propTypes = {
   currency: PropTypes.string.isRequired,
   selectedProducts: PropTypes.instanceOf(Object).isRequired,
   onOrderComplete: PropTypes.func.isRequired,
+  userID: PropTypes.string.isRequired,
 };
 
 export default CheckoutForm;

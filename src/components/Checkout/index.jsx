@@ -61,6 +61,7 @@ const Checkout = () => {
           <CheckoutForm
             amount={amount}
             currency="$"
+            userID={user.ownerId}
             selectedProducts={selectedProducts}
             onOrderComplete={(order) => {
               setProducts(order.products);

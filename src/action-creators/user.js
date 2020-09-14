@@ -7,7 +7,6 @@ import {
   REGISTER_USER_IN_PROGRESS,
   REGISTER_USER_FAILED,
   REGISTER_USER_COMPLETED,
-  REGISTER_USER_SUCCESS,
   SIGN_OUT,
 } from 'actionTypes';
 
@@ -43,8 +42,3 @@ export const registerUserFailed = (err) => ({
 });
 
 export const registerUserCompleted = () => ({ type: REGISTER_USER_COMPLETED });
-
-export const registerUserSuccess = (user) => ({
-  type: REGISTER_USER_SUCCESS,
-  payload: { user },
-});

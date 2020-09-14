@@ -34,7 +34,7 @@ const App = () => {
 
   useEffect(() => {
     if (state.user) {
-      getOrders()
+      getOrders(state.user.objectId)
         .then((orders) => dispatch(orderConfirmed(orders)));
     }
   }, [state.user]);
