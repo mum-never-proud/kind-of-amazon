@@ -1,15 +1,18 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { RiGhostFill } from 'react-icons/ri';
+import { VscCheck } from 'react-icons/vsc';
 import { UserContext } from 'contexts/User';
 import { CartContext } from 'contexts/Cart';
 import Image from 'react-bootstrap/Image';
+import Spinner from 'react-bootstrap/Spinner';
 import shorId from 'shortid';
 import './style.css';
 
 const Orders = () => {
   const [{ user, pastOrders: orders }] = useContext(UserContext);
   const [{ availableProducts }] = useContext(CartContext);
+  const today = new Date();
 
   if (!user) {
     return (
@@ -32,6 +35,34 @@ const Orders = () => {
       </div>
     );
   }
+
+  const deliveryStatus = (deliveryDate) => (new Date(deliveryDate) < today
+    ? (
+      <div className="text-success">
+        <VscCheck />
+        {' '}
+        Delivered on
+        {' '}
+        {new Date(deliveryDate).toDateString()}
+      </div>
+    )
+    : (
+      <div className="text-warning d-flex align-items-center justify-content-end">
+        <Spinner
+          className="mr-1"
+          as="span"
+          variant="warning"
+          animation="grow"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />
+        {' '}
+        Arriving by
+        {' '}
+        {new Date(deliveryDate).toDateString()}
+      </div>
+    ));
 
   return (
     <div className="orders">
@@ -59,7 +90,10 @@ const Orders = () => {
                 </span>
               </div>
             </div>
-            <ul className="order--products-info mt-3">
+            <div className="text-right mt-2 mr-2">
+              {deliveryStatus(order.deliveryDate)}
+            </div>
+            <ul className="order--products-info">
               {
               Object.keys(order.products).map((sku) => {
                 const product = availableProducts[sku];

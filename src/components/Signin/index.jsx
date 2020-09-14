@@ -11,6 +11,7 @@ import Alert from 'react-bootstrap/Alert';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import Toast from 'react-bootstrap/Toast';
 import { authenticateUser } from 'actions/user';
 
@@ -100,7 +101,15 @@ const Signin = ({ from }) => {
             >
               {
                 isLoading && (
-                  <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" />
+                  <Spinner
+                    className="mr-1"
+                    as="span"
+                    variant="dark"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
                 )
               }
               Continue

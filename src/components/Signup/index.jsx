@@ -11,6 +11,7 @@ import Alert from 'react-bootstrap/Alert';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import authValidator from 'utils/user-validator';
 import { registerUser } from 'actions/user';
 
@@ -113,7 +114,15 @@ const Signup = ({ from }) => {
             >
               {
                 isLoading && (
-                  <span className="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" />
+                  <Spinner
+                    className="mr-1"
+                    as="span"
+                    variant="dark"
+                    animation="border"
+                    size="sm"
+                    role="status"
+                    aria-hidden="true"
+                  />
                 )
               }
               Create you Amazon account
