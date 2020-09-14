@@ -43,12 +43,17 @@ app.post('/.netlify/functions/app/create/payment', createPaymentValidator, (req,
         country: 'US',
       },
     },
-    amount: amount * 100,
+    amount: Math.floor(amount * 100),
     currency: 'usd',
     payment_method_types: ['card'],
   })
     .then((secret) => res.status(200).json(secret))
-    .catch((e) => res.boom.badImplementation(e));
+    .catch((e) => {
+      // eslint-disable-next-line no-console
+      console.log(e);
+
+      res.boom.badImplementation(e);
+    });
 });
 app.use((_, res) => res.boom.notFound());
 
