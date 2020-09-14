@@ -43,7 +43,7 @@ app.post('/.netlify/functions/app/create/payment', createPaymentValidator, (req,
         country: 'US',
       },
     },
-    amount,
+    amount: amount * 100,
     currency: 'usd',
     payment_method_types: ['card'],
   })
