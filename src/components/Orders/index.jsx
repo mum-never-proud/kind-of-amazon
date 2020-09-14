@@ -38,7 +38,7 @@ const Orders = () => {
       {
         orders.map((order) => (
           <div className="order--info border" key={shorId.generate()}>
-            <div className="order--info-head border d-flex justify-content-around">
+            <div className="order--info-head border-bottom d-flex justify-content-around">
               <div className="d-flex flex-column">
                 <span>Order Placed</span>
                 <span>

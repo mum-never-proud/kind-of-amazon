@@ -1,3 +1,9 @@
+@media (max-width: 1023px) {
+  .checkout {
+    flex-direction: column-reverse;
+  }
+}
+
 .checkout {
   display: flex;
   gap: 20px;

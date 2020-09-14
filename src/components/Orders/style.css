@@ -18,6 +18,7 @@
   height: 60px;
   display: flex;
   align-items: center;
+  background-color: #f3f3f3;
 }
 
 .ghost {

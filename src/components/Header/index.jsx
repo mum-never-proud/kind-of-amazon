@@ -1,18 +1,39 @@
-import React, { useContext } from 'react';
+import React, {
+  useContext, useState, useEffect, useRef,
+} from 'react';
 import { AiOutlineAmazon, AiOutlineShoppingCart, AiOutlineSearch } from 'react-icons/ai';
+import { RiGhostFill } from 'react-icons/ri';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from 'contexts/User';
 import { CartContext } from 'contexts/Cart';
 import { signOutUser } from 'actions/user';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
+import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button';
 import './style.css';
 
 const Header = () => {
-  const [{ selectedProducts }] = useContext(CartContext);
+  const [{ selectedProducts, availableProducts }] = useContext(CartContext);
   const [{ user }, dispatch] = useContext(UserContext);
+  const [searchText, setSearchText] = useState('');
+  const [searchResult, setSearchResult] = useState([]);
+  const searchBoxRef = useRef();
   const history = useHistory();
+
+  useEffect(() => {
+    searchBoxRef.current.focus();
+  }, []);
+  useEffect(() => {
+    if (searchText.length > 2) {
+      setSearchResult(
+        Object.values(availableProducts)
+          .filter((product) => new RegExp(searchText, 'gi').test(product.title)),
+      );
+    } else {
+      setSearchResult([]);
+    }
+  }, [searchText]);
 
   return (
     <div className="nav-bar h-60 d-flex mb-5">
@@ -29,6 +50,9 @@ const Header = () => {
             className="amz-input-text"
             name="search"
             type="text"
+            ref={searchBoxRef}
+            placeholder="Start typing... (min 3 characters)"
+            onChange={(ev) => setSearchText(ev.target.value)}
           />
           <InputGroup.Append>
             <Button className="amz-button-primary">
@@ -36,6 +60,25 @@ const Header = () => {
             </Button>
           </InputGroup.Append>
         </InputGroup>
+        {
+          searchResult.length !== 0 && (
+            <div className="search-bar--result border">
+              {
+                searchResult.map((product) => (
+                  <div className="search-bar--result-product pb-3" key={product.sku}>
+                    <Image src={product.imageUrl} className="img-thumbnail search-result--thumbnail" />
+                    <span className="ml-2">{product.title}</span>
+                  </div>
+                ))
+              }
+              <div className="search-bar--result-footer text-center amz-text-xs text-info">
+                <RiGhostFill />
+                {' '}
+                Boo, you can&apos;t click on any result
+              </div>
+            </div>
+          )
+        }
       </div>
       <Button
         variant="link"
