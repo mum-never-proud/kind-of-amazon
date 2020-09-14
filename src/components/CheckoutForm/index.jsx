@@ -13,11 +13,11 @@ import Spinner from 'react-bootstrap/Spinner';
 import fetchPaymentToken from 'services/payment';
 
 const CheckoutForm = ({
-  amount, currency, selectedProducts, onOrderComplete, userID,
+  amount, currency, selectedProducts, onOrderComplete, user,
 }) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [cardValidationErrorMessage, setCardValidationErrorMessage] = useState(null);
+  const [cardValidationErrorMessage, setCardValidationErrorMessage] = useState('');
   const [isPaymentProcessing, setIsPaymentProcessing] = useState(false);
   const [isPaymentConfirmed, setIsPaymentConfirmed] = useState(false);
 
@@ -37,12 +37,15 @@ const CheckoutForm = ({
 
     setCardValidationErrorMessage('');
     setIsPaymentProcessing(true);
-    fetchPaymentToken()
+    fetchPaymentToken({
+      name: user.name,
+      amount,
+    })
       .then((res) => stripe.confirmCardPayment(res.client_secret, {
         payment_method: {
           card: elements.getElement(CardElement),
           billing_details: {
-            name: 'Jenny Rosen',
+            name: user.name,
           },
         },
       }))
@@ -57,7 +60,7 @@ const CheckoutForm = ({
         orderID,
         products: selectedProducts,
         total: amount,
-      }, userID))
+      }, user.ownerId))
       .then((order) => {
         setIsPaymentConfirmed(true);
         onOrderComplete({ ...order, total: amount });
@@ -69,6 +72,8 @@ const CheckoutForm = ({
   const handleChange = (ev) => {
     if (ev.error) {
       setCardValidationErrorMessage(ev.error.message);
+    } else {
+      setCardValidationErrorMessage('');
     }
   };
 
@@ -109,7 +114,7 @@ const CheckoutForm = ({
           {' '}
           <span className="font-weight-bold">
             {currency}
-            {amount}
+            {amount.toFixed(2)}
           </span>
         </Button>
       </Form.Group>
@@ -122,7 +127,7 @@ CheckoutForm.propTypes = {
   currency: PropTypes.string.isRequired,
   selectedProducts: PropTypes.instanceOf(Object).isRequired,
   onOrderComplete: PropTypes.func.isRequired,
-  userID: PropTypes.string.isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default CheckoutForm;
