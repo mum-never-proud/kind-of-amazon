@@ -8,7 +8,10 @@ const bodyParser = require('body-parser');
 
 const boom = require('express-boom');
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY, {
+  // to avoid giving up for intermittent connectivity issues with stripe servers
+  maxNetworkRetries: 2,
+});
 
 const cors = require('cors');
 
