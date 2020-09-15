@@ -40,7 +40,7 @@ const userReducer = (state, action) => {
     case ORDER_CONFIRMED:
       return {
         ...state,
-        pastOrders: state.pastOrders.concat(action.payload),
+        pastOrders: [].concat(action.payload, state.pastOrders),
       };
     default:
       return state;

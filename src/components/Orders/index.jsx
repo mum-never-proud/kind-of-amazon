@@ -100,7 +100,7 @@ const Orders = () => {
 
                 return (
                   <li className="mb-3 p-5" key={shorId.generate()}>
-                    <div className="product-image">
+                    <div className="product-image text-center">
                       <Image src={product.imageUrl} />
                     </div>
                     <div className="product-details ml-3">

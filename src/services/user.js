@@ -36,6 +36,8 @@ const saveOrder = (order, parentObjectId) => new Promise((resolve, reject) => {
 
 const getOrders = (objectId) => {
   const loadRelationsQueryBuilder = Backendless.LoadRelationsQueryBuilder.create().setRelationName('orders');
+  loadRelationsQueryBuilder.setPageSize(100); // load upto 100 orders
+  loadRelationsQueryBuilder.setSortBy(['created DESC']);
 
   return users.loadRelations(objectId, loadRelationsQueryBuilder);
 };
