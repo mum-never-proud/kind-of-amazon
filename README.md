@@ -2,7 +2,11 @@
 
 # kind-of-amazon
 
-A clone of Amazon with basic Features and Payment gateway. For Card Number you can punch in **42** till the end
+A clone of Amazon with basic Features and Payment gateway.
+
+## Note
+
+For Card Number you can punch in **42** till the end
 
 ## Demo
 
