@@ -48,7 +48,6 @@ const Header = () => {
       <div className="nav-bar--search">
         <InputGroup>
           <Form.Control
-            aria-label="Search Amazon"
             className="amz-input-text"
             name="search"
             type="text"
@@ -57,7 +56,7 @@ const Header = () => {
             onChange={(ev) => setSearchText(ev.target.value)}
           />
           <InputGroup.Append>
-            <Button className="amz-button-primary">
+            <Button className="amz-button-primary" aria-label="Search Amazon">
               <AiOutlineSearch />
             </Button>
           </InputGroup.Append>
