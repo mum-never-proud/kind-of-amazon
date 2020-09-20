@@ -1,12 +1,13 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'production',
   entry: './src/index.jsx',
   output: {
-    filename: 'app.min.js',
+    filename: 'app.[contenthash].min.js',
     path: path.resolve(__dirname, 'dist'),
   },
   node: {
@@ -75,6 +76,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.html'),
     }),
+    new CleanWebpackPlugin(),
     new Dotenv(),
   ],
 };

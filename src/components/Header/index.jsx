@@ -38,6 +38,7 @@ const Header = () => {
   return (
     <div className="nav-bar h-60 d-flex mb-5">
       <Button
+        aria-label="Back to Home"
         variant="link"
         className="nav-bar--logo nav-bar--anchor text-center"
         onClick={() => history.push('/')}
@@ -47,6 +48,7 @@ const Header = () => {
       <div className="nav-bar--search">
         <InputGroup>
           <Form.Control
+            aria-label="Search Amazon"
             className="amz-input-text"
             name="search"
             type="text"

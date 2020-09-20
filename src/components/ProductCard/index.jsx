@@ -102,7 +102,7 @@ const ProductCard = ({
         )
       }
       <div className="product-card--image text-center">
-        <Image src={imageUrl} />
+        <Image src={imageUrl} alt={title} />
       </div>
       {
         !viewOnly && (addToCartBtn || counterBtn)

@@ -63,8 +63,9 @@ const Signup = ({ from }) => {
             <h4>Create Account</h4>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold">Name</Form.Label>
+            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="name">Name</Form.Label>
             <Form.Control
+              id="name"
               name="name"
               type="text"
               className="amz-text-xs amz-input-text"
@@ -77,8 +78,9 @@ const Signup = ({ from }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold">Email</Form.Label>
+            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="email">Email</Form.Label>
             <Form.Control
+              id="email"
               name="email"
               type="text"
               className="amz-text-xs amz-input-text"
@@ -91,8 +93,9 @@ const Signup = ({ from }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold">Password</Form.Label>
+            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="password">Password</Form.Label>
             <Form.Control
+              id="password"
               name="password"
               type="password"
               className="amz-text-xs amz-input-text"

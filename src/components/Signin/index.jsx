@@ -58,8 +58,9 @@ const Signin = ({ from }) => {
             <h4>Sign-in</h4>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold">Email (phone for mobile accounts)</Form.Label>
+            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="email">Email (phone for mobile accounts)</Form.Label>
             <Form.Control
+              id="email"
               type="text"
               className="amz-text-xs amz-input-text"
               isInvalid={isInvalidEmail}
@@ -75,8 +76,9 @@ const Signin = ({ from }) => {
             }
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold">Password</Form.Label>
+            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="password">Password</Form.Label>
             <Form.Control
+              id="password"
               type="password"
               className="amz-text-xs amz-input-text"
               isInvalid={isInvalidPassword}
