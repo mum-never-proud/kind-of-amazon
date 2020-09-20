@@ -7,6 +7,7 @@ import {
 } from '@stripe/react-stripe-js';
 import { VscError, VscCheck } from 'react-icons/vsc';
 import { saveOrder } from 'services/user';
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/button';
 import Form from 'react-bootstrap/Form';
 import Spinner from 'react-bootstrap/Spinner';
@@ -79,6 +80,20 @@ const CheckoutForm = ({
 
   return (
     <Form onSubmit={handleCheckout} className="amz-form--sm border">
+      <Form.Group>
+        <Alert
+          variant="warning"
+        >
+          <Alert.Heading>Heads Up!</Alert.Heading>
+          <p>
+            Do not enter your orignal Card number. Instead type
+            {' '}
+            <b>42</b>
+            {' '}
+            till you reach the end!
+          </p>
+        </Alert>
+      </Form.Group>
       <Form.Group>
         <CardElement
           className="form-control amz-input-text"
