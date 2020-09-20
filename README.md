@@ -2,11 +2,15 @@
 
 # kind-of-amazon
 
-amazon-clone
+A clone of Amazon with basic Features and Payment gateway.
+
+## Note
+
+For Card Number you can punch in **42** till the end
 
 ## Demo
 
-Check out <a href="https://amz-clone.netlify.app/">amazon clone</a>
+Check out <a href="https://amz-clone.netlify.app/">amazon clone</a>!
 
 ### Pfft!
 
