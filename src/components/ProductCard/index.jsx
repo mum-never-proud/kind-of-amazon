@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { RiStarFill, RiStarHalfFill, RiRocketLine } from 'react-icons/ri';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
-import { RiStarFill, RiStarHalfFill, RiRocketLine } from 'react-icons/ri';
+import Spinner from 'react-bootstrap/Spinner';
 import './style.css';
 
 const ProductCard = ({
@@ -32,6 +33,7 @@ const ProductCard = ({
     </div>
   ));
   const [dollar, cents] = String(price).split('.');
+  const [isImageLoading, setIsImageLoading] = useState(true);
   const counterBtn = (selectedQuantity !== 0 && (
     <div className="d-flex justify-content-center align-items-center mt-3">
       <Button
@@ -61,7 +63,7 @@ const ProductCard = ({
   }
 
   return (
-    <div className={`product-card ${variant === 'primary' ? '' : 'product-card--secondary'}`}>
+    <div className={`product-card ${variant === 'primary' ? '' : 'product-card--secondary mt-5'}`}>
       <div className="product-card--title">
         {title}
       </div>
@@ -101,8 +103,9 @@ const ProductCard = ({
           </div>
         )
       }
-      <div className="product-card--image text-center">
-        <Image src={imageUrl} alt={title} />
+      <div className="product-card--image text-center d-flex align-items-center justify-content-center">
+        <Image src={imageUrl} alt={title} onLoad={() => setIsImageLoading(false)} />
+        {isImageLoading && <Spinner animation="border" />}
       </div>
       {
         !viewOnly && (addToCartBtn || counterBtn)

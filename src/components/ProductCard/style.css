@@ -22,6 +22,10 @@
   width: 75px !important;
 }
 
+.product-card--image {
+  height: 200px;
+}
+
 .product-card--image > img {
   max-height: 200px;
 }

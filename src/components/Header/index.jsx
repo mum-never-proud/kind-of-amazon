@@ -45,7 +45,7 @@ const Header = () => {
       >
         <AiOutlineAmazon />
       </Button>
-      <div className="nav-bar--search">
+      <div className="nav-bar--search d-flex align-items-center">
         <InputGroup>
           <Form.Control
             className="amz-input-text"

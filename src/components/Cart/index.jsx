@@ -22,7 +22,7 @@ const Orders = () => {
   return (
     <div className="cart">
       <div className="cart--items">
-        <div className="cart--items-info">
+        <div className="cart--items-info  mr-4">
           <p className="lead">Shopping Cart</p>
           {
             skus.length === 0
@@ -56,7 +56,7 @@ const Orders = () => {
           )
         }
       </div>
-      <div className="cart--recommendations mt-5">
+      <div className="cart--recommendation">
         <p className="lead">Recommendations based on your Interest</p>
         <Products />
       </div>

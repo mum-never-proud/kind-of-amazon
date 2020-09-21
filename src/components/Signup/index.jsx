@@ -68,7 +68,7 @@ const Signup = ({ from }) => {
               id="name"
               name="name"
               type="text"
-              className="amz-text-xs amz-input-text"
+              className="amz-text-xs amz-input-text  amz-input-text--xs"
               isInvalid={invalidFields.name}
               ref={formRefs.name}
               onChange={updateUserDetails}
@@ -83,7 +83,7 @@ const Signup = ({ from }) => {
               id="email"
               name="email"
               type="text"
-              className="amz-text-xs amz-input-text"
+              className="amz-text-xs amz-input-text  amz-input-text--xs"
               isInvalid={invalidFields.email}
               ref={formRefs.email}
               onChange={updateUserDetails}
@@ -98,7 +98,7 @@ const Signup = ({ from }) => {
               id="password"
               name="password"
               type="password"
-              className="amz-text-xs amz-input-text"
+              className="amz-text-xs amz-input-text  amz-input-text--xs"
               isInvalid={invalidFields.password}
               ref={formRefs.password}
               onChange={updateUserDetails}

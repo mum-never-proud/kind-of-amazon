@@ -79,7 +79,7 @@ const Orders = () => {
               <div className="d-flex flex-column">
                 <span>Total</span>
                 <span>
-                  {order.total}
+                  {order.total.toFixed(2)}
                   $
                 </span>
               </div>
@@ -112,7 +112,7 @@ const Orders = () => {
                       </div>
                       <div>
                         {product.currency}
-                        {product.price}
+                        {product.price.toFixed(2)}
                       </div>
                     </div>
                   </li>

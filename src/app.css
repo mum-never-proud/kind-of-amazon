@@ -29,11 +29,13 @@
 }
 
 html, body {
-  font-family: "Amazon Ember", Helvetica, Arial, sans-;
+  font-family: "Amazon Ember", Helvetica, Arial;
+}
+.amz-input-text--xs {
+  height: 31px;
 }
 
 .amz-input-text {
-  height: 31px;
   border: 1px solid #a6a6a6;
   border-top-color: #949494;
   border-radius: 3px;

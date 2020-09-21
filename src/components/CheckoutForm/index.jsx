@@ -96,7 +96,7 @@ const CheckoutForm = ({
       </Form.Group>
       <Form.Group>
         <CardElement
-          className="form-control amz-input-text"
+          className="form-control amz-input-text  amz-input-text--xs"
           onChange={handleChange}
         />
         {

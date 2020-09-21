@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { CartContext } from 'contexts/Cart';
 import { addOrIncrementProductInCart, removeOrDecrementProductInCart } from 'actions/cart';
 import ProductCard from 'components/ProductCard';
-import './style.css';
 
 const Products = () => {
   const [

@@ -1,6 +1,5 @@
 .cart--items {
   display: flex;
-  gap: 20px;
 }
 
 .cart--items-info {

@@ -38,7 +38,7 @@ const Checkout = () => {
 
   return (
     <div className="checkout">
-      <div className="checkout--items">
+      <div className="checkout--items mr-4">
         <p className="lead">{Object.keys(selectedProducts).length === 0 ? 'Ordered Items' : 'Review Items'}</p>
         {
           skus.map((sku) => {

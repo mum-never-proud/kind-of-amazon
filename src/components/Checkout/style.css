@@ -1,6 +1,5 @@
 .checkout {
   display: flex;
-  gap: 20px;
 }
 
 .checkout--form {

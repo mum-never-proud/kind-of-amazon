@@ -62,7 +62,7 @@ const Signin = ({ from }) => {
             <Form.Control
               id="email"
               type="text"
-              className="amz-text-xs amz-input-text"
+              className="amz-text-xs amz-input-text  amz-input-text--xs"
               isInvalid={isInvalidEmail}
               ref={formRefs.email}
               onChange={(ev) => setEmail(ev.target.value)}
@@ -80,7 +80,7 @@ const Signin = ({ from }) => {
             <Form.Control
               id="password"
               type="password"
-              className="amz-text-xs amz-input-text"
+              className="amz-text-xs amz-input-text  amz-input-text--xs"
               isInvalid={isInvalidPassword}
               ref={formRefs.password}
               onChange={(ev) => setPassword(ev.target.value)}
