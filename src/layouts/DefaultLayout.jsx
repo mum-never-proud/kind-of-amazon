@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container';
 const DefaultLayout = ({ component: Component }) => (
   <Route>
     <Header />
-    <Container>
+    <Container fluid>
       <Component />
     </Container>
     <Footer />

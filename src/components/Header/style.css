@@ -36,6 +36,10 @@
   position: relative;
 }
 
+.nav-bar--search .amz-input--text-default {
+  box-shadow: unset;
+}
+
 .nav-bar--search button {
   z-index: 5 !important;
 }

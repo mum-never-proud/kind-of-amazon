@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import CurrencyFormatter from 'components/commons/CurrencyFormatter';
 import './style.css';
 
-const CartDetails = ({ itemsCount, price }) => {
+const CartDetails = ({ currency, itemsCount, price }) => {
   const history = useHistory();
 
   return (
@@ -21,13 +22,12 @@ const CartDetails = ({ itemsCount, price }) => {
             )
           </div>
           <div className="cart-details--total font-weight-bold lead">
-            $
-            {price.toFixed(2)}
+            <CurrencyFormatter currency={currency} price={price} />
           </div>
         </Form.Text>
       </Form.Group>
-      <Form.Group className="d-flex justify-content-center">
-        <Button className="amz-button-primary" onClick={() => history.push('/checkout')}>Proceed to checkout</Button>
+      <Form.Group>
+        <Button className="amz-button--primary" onClick={() => history.push('/checkout')}>Proceed to checkout</Button>
       </Form.Group>
     </Form>
   );
@@ -35,7 +35,8 @@ const CartDetails = ({ itemsCount, price }) => {
 
 CartDetails.propTypes = {
   itemsCount: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
 };
 
 export default CartDetails;

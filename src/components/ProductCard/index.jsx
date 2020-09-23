@@ -4,12 +4,12 @@ import { RiStarFill, RiStarHalfFill, RiRocketLine } from 'react-icons/ri';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Spinner from 'react-bootstrap/Spinner';
+import CurrencyFormatter from 'components/commons/CurrencyFormatter';
 import './style.css';
 
 const ProductCard = ({
   variant,
   product,
-  availableQuantity,
   selectedQuantity,
   viewOnly,
   shouldDisplayOutOfStockText,
@@ -18,6 +18,7 @@ const ProductCard = ({
   onProductIncrement,
 }) => {
   const {
+    availableQuantity,
     currency,
     price,
     title,
@@ -26,18 +27,17 @@ const ProductCard = ({
     isPrimeAvailable,
   } = product;
   const addToCartBtn = (availableQuantity !== 0 && selectedQuantity === 0 && (
-    <div className="text-center">
-      <Button className="mt-3 amz-button-primary amz-text-xs" onClick={onAddToCart}>
+    <div className="d-flex justify-content-center align-items-center mt-3">
+      <Button className="amz-button--primary amz-text-sm" onClick={onAddToCart}>
         Add to Cart
       </Button>
     </div>
   ));
-  const [dollar, cents] = String(price).split('.');
   const [isImageLoading, setIsImageLoading] = useState(true);
   const counterBtn = (selectedQuantity !== 0 && (
     <div className="d-flex justify-content-center align-items-center mt-3">
       <Button
-        className="amz-button-primary amz-text-xs"
+        className="amz-button--primary amz-text-sm"
         onClick={onProductDecrement}
       >
         -
@@ -45,7 +45,7 @@ const ProductCard = ({
       <span className="pl-2 pr-2">{selectedQuantity}</span>
       <Button
         disabled={!availableQuantity}
-        className="amz-button-primary amz-text-xs"
+        className="amz-button--primary amz-text-sm"
         onClick={onProductIncrement}
       >
         +
@@ -63,23 +63,20 @@ const ProductCard = ({
   }
 
   return (
-    <div className={`product-card ${variant === 'primary' ? '' : 'product-card--secondary mt-5'}`}>
+    <div className={`product-card ${variant === 'primary' ? '' : 'product-card--secondary'}`}>
       <div className="product-card--title">
         {title}
       </div>
       {
         isPrimeAvailable && (
-          <div className="product-card--prime-availablility">
+          <div className="product-card--prime-availablility d-flex align-items-center">
             <RiRocketLine />
-            {' '}
-            Prime available
+            <span className="ml-1">Prime available</span>
           </div>
         )
       }
       <div className="product-card--price">
-        {currency}
-        {dollar}
-        <sup>{cents}</sup>
+        <CurrencyFormatter currency={currency} price={price} />
         {availablilityWarning && (
           <span className="text-danger">
             {' '}
@@ -104,7 +101,12 @@ const ProductCard = ({
         )
       }
       <div className="product-card--image text-center d-flex align-items-center justify-content-center">
-        <Image src={imageUrl} alt={title} onLoad={() => setIsImageLoading(false)} />
+        <Image
+          className={`${isImageLoading ? 'd-none' : 'd-block'}`}
+          src={imageUrl}
+          alt={title}
+          onLoad={() => setIsImageLoading(false)}
+        />
         {isImageLoading && <Spinner animation="border" />}
       </div>
       {
@@ -118,7 +120,6 @@ ProductCard.defaultProps = {
   variant: 'primary',
   viewOnly: false,
   shouldDisplayOutOfStockText: true,
-  availableQuantity: null,
   onAddToCart: () => {},
   onProductDecrement: () => {},
   onProductIncrement: () => {},
@@ -129,7 +130,6 @@ ProductCard.propTypes = {
   shouldDisplayOutOfStockText: PropTypes.bool,
   variant: PropTypes.string,
   product: PropTypes.instanceOf(Object).isRequired,
-  availableQuantity: PropTypes.number,
   selectedQuantity: PropTypes.number.isRequired,
   onAddToCart: PropTypes.func,
   onProductDecrement: PropTypes.func,

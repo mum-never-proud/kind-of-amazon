@@ -1,15 +1,9 @@
-.cart--items {
-  display: flex;
+.cart {
+  display: grid;
+  grid-template-columns: 70% 28%;
+  grid-column-gap: 2%;
 }
 
-.cart--items-info {
-  flex: 70;
-}
-
-.cart--items-info > .product-card {
+.cart--items > .product-card {
   margin-bottom: 20px;
-}
-
-.cart--form {
-  flex: 30;
 }

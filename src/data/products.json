@@ -1,0 +1,62 @@
+[
+  {
+    "sku": "1",
+    "title": "New Apple MacBook Pro (16-inch, 16GB RAM, 512GB Storage, 2.6GHz Intel Core i7) - Space Gray",
+    "imageUrl": "https://ik.imagekit.io/mumneverproud/71pC69I3lzL._AC_SL1500__lD6wa_XQaP4_.jpg",
+    "price": "949.99",
+    "rating": 3.5,
+    "currency": "$",
+    "isPrimeAvailable": false,
+    "availableQuantity": 5
+  },
+  {
+    "sku": "2",
+    "title": "New Apple MacBook Pro (13-inch, 16GB RAM, 512GB SSD Storage, Magic Keyboard) - Space Gray",
+    "imageUrl": "https://ik.imagekit.io/mumneverproud/71bElkQQ7LL._AC_SL1500__hvN1dxENwQX.jpg",
+    "price": "1699.00",
+    "rating": 5,
+    "currency": "$",
+    "isPrimeAvailable": true,
+    "availableQuantity": 10
+  },
+ {
+    "sku": "3",
+    "title": "Sony KDL32W600D 32\" 720p Smart LED TV - Black",
+    "imageUrl": "https://ik.imagekit.io/mumneverproud/81kezz4E4oL._AC_SL1500__zcyYp2O1I.jpg",
+    "price": "298.00",
+    "rating": 4.5,
+    "currency": "$",
+    "isPrimeAvailable": false,
+    "availableQuantity": 3
+  },
+  {
+    "sku": "4",
+    "title": "Apple iPad (10.2-inch, Wi-Fi, 32GB) - Gold (Latest Model)",
+    "imageUrl": "https://ik.imagekit.io/mumneverproud/61NhHYq8AnL._AC_SL1500__6JVjBfmMWE.jpg",
+    "price": "319.99",
+    "rating": 1.5,
+    "currency": "$",
+    "isPrimeAvailable": false,
+    "availableQuantity": 1
+  },
+  {
+    "sku": "5",
+    "title": "New Apple iPad Pro (12.9-inch, Wi-Fi, 128GB) - Space Gray (4th Generation)",
+    "imageUrl": "https://ik.imagekit.io/mumneverproud/81SGb5l_lZL._AC_SL1500__frCgQRbeH2.jpg",
+    "price": "399.00",
+    "rating": 3.5,
+    "currency": "$",
+    "isPrimeAvailable": true,
+    "availableQuantity": 9
+  },
+  {
+    "sku": "6",
+    "title": "Apple Smart Keyboard (for iPad - 7th Generation and iPad Air - 3rd Generation) - US English",
+    "imageUrl": "https://ik.imagekit.io/mumneverproud/51ef1_iMUHL._AC_SL1000__-oV2k6ODad.jpg",
+    "price": "149.98",
+    "rating": 0.5,
+    "currency": "$",
+    "isPrimeAvailable": false,
+    "availableQuantity": 15
+  }
+]

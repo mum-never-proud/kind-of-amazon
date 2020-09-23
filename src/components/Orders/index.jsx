@@ -1,17 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { RiGhostFill } from 'react-icons/ri';
 import { VscCheck } from 'react-icons/vsc';
 import { UserContext } from 'contexts/User';
-import { CartContext } from 'contexts/Cart';
+import { ShopContext } from 'contexts/Shop';
+import { getOrders } from 'services/user';
 import Image from 'react-bootstrap/Image';
 import Spinner from 'react-bootstrap/Spinner';
-import shorId from 'shortid';
+import CurrencyFormatter from 'components/commons/CurrencyFormatter';
+import shortId from 'shortid';
 import './style.css';
 
 const Orders = () => {
-  const [{ user, pastOrders: orders }] = useContext(UserContext);
-  const [{ availableProducts }] = useContext(CartContext);
+  const [{ user }] = useContext(UserContext);
+  const [{ availableProducts }] = useContext(ShopContext);
+  const [ordersState, setOrdersState] = useState({
+    isFetchingOrders: true,
+    errorMessage: '',
+    orders: [],
+  });
+  const { orders, isFetchingOrders, errorMessage } = ordersState;
   const today = new Date();
 
   if (!user) {
@@ -25,11 +33,46 @@ const Orders = () => {
     );
   }
 
+  useEffect(() => {
+    setOrdersState({ ...ordersState, isFetchingOrders: true });
+    getOrders(user.objectId)
+      .then((pastOrders) => setOrdersState({
+        isFetchingOrders: false,
+        orders: pastOrders,
+      }))
+      .catch(({ message }) => setOrdersState({
+        ...ordersState,
+        isFetchingOrders: false,
+        errorMessage: message,
+      }));
+  }, []);
+
+  if (isFetchingOrders) {
+    return (
+      <div className="text-center">
+        <Spinner animation="border" />
+      </div>
+    );
+  }
+
+  if (errorMessage) {
+    return (
+      <div className="text-center text-danger">
+        <p>Whooops something went wrong!</p>
+        <span className="font-weight-bold amz-text-xs">
+          Message:
+          {' '}
+          {errorMessage}
+        </span>
+      </div>
+    );
+  }
+
   if (!orders.length) {
     return (
       <div className="text-center">
         No orders to Display!
-        <div className="h1 mt-5 ghost">
+        <div className="h1 mt-3 ghost">
           <RiGhostFill />
         </div>
       </div>
@@ -68,7 +111,7 @@ const Orders = () => {
     <div className="orders">
       {
         orders.map((order) => (
-          <div className="order--info border" key={shorId.generate()}>
+          <div className="order--info border" key={shortId.generate()}>
             <div className="order--info-head border-bottom d-flex justify-content-around">
               <div className="d-flex flex-column">
                 <span>Order Placed</span>
@@ -79,8 +122,7 @@ const Orders = () => {
               <div className="d-flex flex-column">
                 <span>Total</span>
                 <span>
-                  {order.total.toFixed(2)}
-                  $
+                  <CurrencyFormatter price={order.total} currency="$" />
                 </span>
               </div>
               <div className="d-flex flex-column">
@@ -99,7 +141,7 @@ const Orders = () => {
                 const product = availableProducts[sku];
 
                 return (
-                  <li className="mb-3 p-5" key={shorId.generate()}>
+                  <li className="mb-3 p-5" key={shortId.generate()}>
                     <div className="product-image text-center">
                       <Image src={product.imageUrl} />
                     </div>
@@ -111,8 +153,7 @@ const Orders = () => {
                         {order.products[sku]}
                       </div>
                       <div>
-                        {product.currency}
-                        {product.price.toFixed(2)}
+                        <CurrencyFormatter price={product.price} currency={product.currency} />
                       </div>
                     </div>
                   </li>

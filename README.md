@@ -2,15 +2,23 @@
 
 # kind-of-amazon
 
-A clone of Amazon with basic Features and Payment gateway.
+A Kind of Amazon (Amazon clone) with basic Features and Payment gateway integration.
 
 ## Note
 
-For Card Number you can punch in **42** till the end
+For Card Number, you can punch in **42** till the end.
 
 ## Demo
 
 Check out <a href="https://amz-clone.netlify.app/">amazon clone</a>!
+
+## Improvements
+
+There's a lot of improvements needed.
+
+- Lazy load the Components.
+- Currently, the products are constants, can be moved to Aloglia or any better service.
+- Backendless BAAS is used to manage User sessions and save orders. The library is quite bloated, considering to migrate to Parse.
 
 ### Pfft!
 

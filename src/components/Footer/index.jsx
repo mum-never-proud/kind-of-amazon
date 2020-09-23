@@ -3,7 +3,7 @@ import { AiOutlineAmazon, AiTwotoneHeart } from 'react-icons/ai';
 import './style.css';
 
 const Footer = () => (
-  <div className="amz-footer text-center mt-5">
+  <div className="amz-footer text-center mt-3">
     <AiOutlineAmazon className="h1" />
     <div>
       clone made with much

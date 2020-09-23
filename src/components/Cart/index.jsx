@@ -1,28 +1,23 @@
 import React, { useContext } from 'react';
-import { CartContext } from 'contexts/Cart';
-import { addOrIncrementProductInCart, removeOrDecrementProductInCart } from 'actions/cart';
-import CartDetails from 'components/CartDetails';
-import Products from 'components/Products';
+import { ShopContext } from 'contexts/Shop';
+import { addProduct, removeProduct } from 'actions/shop';
+import CartTotal from 'components/CartTotal';
+import ProductList from 'components/ProductList';
 import ProductCard from 'components/ProductCard';
 import computeCartTotal from 'utils/compute-cart-total';
 import './style.css';
 
 const Orders = () => {
-  const [
-    {
-      availableProducts,
-      selectedProducts,
-      productQuantites,
-    },
-    dispatch,
-  ] = useContext(CartContext);
+  const [{ availableProducts, selectedProducts }, dispatch] = useContext(ShopContext);
   const skus = Object.keys(selectedProducts);
   const price = computeCartTotal(selectedProducts, availableProducts);
+  const abandonedProducts = Object.values(availableProducts)
+    .filter((product) => !skus.includes(product.sku) && product.availableQuantity > 0);
 
   return (
-    <div className="cart">
-      <div className="cart--items">
-        <div className="cart--items-info  mr-4">
+    <>
+      <div className="cart">
+        <div className="cart--items">
           <p className="lead">Shopping Cart</p>
           {
             skus.length === 0
@@ -34,12 +29,12 @@ const Orders = () => {
                   <ProductCard
                     key={product.sku}
                     product={product}
-                    availableQuantity={productQuantites[product.sku]}
+                    availableQuantity={product.availableQuantity}
                     selectedQuantity={selectedProducts[product.sku] || 0}
                     shouldDisplayOutOfStockText={false}
-                    onAddToCart={() => addOrIncrementProductInCart(dispatch)(product.sku)}
-                    onProductIncrement={() => addOrIncrementProductInCart(dispatch)(product.sku)}
-                    onProductDecrement={() => removeOrDecrementProductInCart(dispatch)(product.sku)}
+                    onAddToCart={() => addProduct(dispatch)(product.sku)}
+                    onProductIncrement={() => addProduct(dispatch)(product.sku)}
+                    onProductDecrement={() => removeProduct(dispatch)(product.sku)}
                   />
                 );
               }))
@@ -47,9 +42,11 @@ const Orders = () => {
         </div>
         {
           skus.length !== 0 && (
-            <div className="cart--form">
-              <CartDetails
+            <div>
+              <CartTotal
                 itemsCount={Object.values(selectedProducts).reduce((a, b) => a + b, 0)}
+                // TODO: maintain currencies in constants
+                currency="$"
                 price={price}
               />
             </div>
@@ -58,9 +55,9 @@ const Orders = () => {
       </div>
       <div className="cart--recommendation">
         <p className="lead">Recommendations based on your Interest</p>
-        <Products />
+        <ProductList availableProducts={abandonedProducts} selectedProducts={selectedProducts} />
       </div>
-    </div>
+    </>
   );
 };
 

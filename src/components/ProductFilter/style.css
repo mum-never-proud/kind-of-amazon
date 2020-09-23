@@ -1,0 +1,19 @@
+.ratings {
+  color: #ffce00;
+}
+
+.ratings > li, .price > li {
+  cursor: pointer;
+}
+
+.ratings > li.active > span,
+.ratings > li:hover > span,
+.price > li:hover, .price > li.active {
+  color: #c45500;
+  text-decoration: underline;
+}
+
+.ratings > li > span {
+  color: initial;
+}
+

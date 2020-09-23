@@ -11,10 +11,11 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/button';
 import Form from 'react-bootstrap/Form';
 import Spinner from 'react-bootstrap/Spinner';
+import CurrencyFormatter from 'components/commons/CurrencyFormatter';
 import fetchPaymentToken from 'services/payment';
 
 const CheckoutForm = ({
-  amount, currency, selectedProducts, onOrderComplete, user,
+  price, currency, selectedProducts, onOrderComplete, user,
 }) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -40,7 +41,7 @@ const CheckoutForm = ({
     setIsPaymentProcessing(true);
     fetchPaymentToken({
       name: user.name,
-      amount,
+      price,
     })
       .then((res) => stripe.confirmCardPayment(res.client_secret, {
         payment_method: {
@@ -60,11 +61,11 @@ const CheckoutForm = ({
       .then((orderID) => saveOrder({
         orderID,
         products: selectedProducts,
-        total: amount,
+        total: price,
       }, user.ownerId))
       .then((order) => {
         setIsPaymentConfirmed(true);
-        onOrderComplete({ ...order, total: amount });
+        onOrderComplete({ ...order, total: price });
       })
       .catch(({ message }) => setCardValidationErrorMessage(message))
       .finally(() => setIsPaymentProcessing(false));
@@ -96,12 +97,12 @@ const CheckoutForm = ({
       </Form.Group>
       <Form.Group>
         <CardElement
-          className="form-control amz-input-text  amz-input-text--xs"
+          className="form-control amz-input--text-default  amz-input--text-default--xs"
           onChange={handleChange}
         />
         {
           cardValidationErrorMessage && (
-            <Form.Text className="text-danger amz-text-xs">
+            <Form.Text className="text-danger amz-text-sm">
               <VscError />
               {' '}
               {cardValidationErrorMessage}
@@ -110,7 +111,7 @@ const CheckoutForm = ({
         }
       </Form.Group>
       <Form.Group>
-        <Button type="submit" className="amz-button-primary amz-text-xs" disabled={!stripe || isPaymentProcessing}>
+        <Button type="submit" className="amz-button--primary amz-text-sm" disabled={!stripe || isPaymentProcessing}>
           {
           isPaymentProcessing && (
             <Spinner
@@ -128,8 +129,7 @@ const CheckoutForm = ({
           {isPaymentProcessing ? 'ing' : ''}
           {' '}
           <span className="font-weight-bold">
-            {currency}
-            {amount.toFixed(2)}
+            <CurrencyFormatter currency={currency} price={price} />
           </span>
         </Button>
       </Form.Group>
@@ -138,7 +138,7 @@ const CheckoutForm = ({
 };
 
 CheckoutForm.propTypes = {
-  amount: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
   selectedProducts: PropTypes.instanceOf(Object).isRequired,
   onOrderComplete: PropTypes.func.isRequired,

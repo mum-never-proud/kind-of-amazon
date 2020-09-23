@@ -1,9 +1,12 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   border: 1px solid #e1e1e1;
   padding: 15px;
+}
+
+.product-card > :not(:first-child) {
+  margin-top: 8px;
 }
 
 .product-card--secondary {
@@ -11,15 +14,11 @@
   flex-direction: column;
   flex-basis: 100%;
   flex: 1;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .product-card--rating {
   color: #ffce00;
-}
-
-.product-card--count {
-  width: 75px !important;
 }
 
 .product-card--image {

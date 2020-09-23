@@ -1,13 +1,7 @@
 .checkout {
-  display: flex;
-}
-
-.checkout--form {
-  flex: 30;
-}
-
-.checkout--items {
-  flex: 70;
+  display: grid;
+  grid-template-columns: 70% 28%;
+  grid-column-gap: 2%;
 }
 
 .checkout--items > .product-card {

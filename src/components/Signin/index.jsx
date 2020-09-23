@@ -58,11 +58,11 @@ const Signin = ({ from }) => {
             <h4>Sign-in</h4>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="email">Email (phone for mobile accounts)</Form.Label>
+            <Form.Label className="amz-text-sm font-weight-bold" htmlFor="email">Email (phone for mobile accounts)</Form.Label>
             <Form.Control
               id="email"
               type="text"
-              className="amz-text-xs amz-input-text  amz-input-text--xs"
+              className="amz-text-sm amz-input--text-default  amz-input--text-default--xs"
               isInvalid={isInvalidEmail}
               ref={formRefs.email}
               onChange={(ev) => setEmail(ev.target.value)}
@@ -76,11 +76,11 @@ const Signin = ({ from }) => {
             }
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="password">Password</Form.Label>
+            <Form.Label className="amz-text-sm font-weight-bold" htmlFor="password">Password</Form.Label>
             <Form.Control
               id="password"
               type="password"
-              className="amz-text-xs amz-input-text  amz-input-text--xs"
+              className="amz-text-sm amz-input--text-default  amz-input--text-default--xs"
               isInvalid={isInvalidPassword}
               ref={formRefs.password}
               onChange={(ev) => setPassword(ev.target.value)}
@@ -98,7 +98,7 @@ const Signin = ({ from }) => {
               block
               type="submit"
               variant="light"
-              className="amz-text-xs amz-button-primary"
+              className="amz-text-sm amz-button--primary"
               disabled={isLoading}
             >
               {
@@ -130,12 +130,12 @@ const Signin = ({ from }) => {
             </Form.Text>
           </Form.Group>
         </Form>
-        <div className="mt-3 text-center text-muted new-user amz-text-xs">
+        <div className="mt-3 text-center text-muted new-user amz-text-sm">
           <p>New to Amazon?</p>
           <Button
             block
             variant="light"
-            className="amz-text-xs amz-button-secondary"
+            className="amz-text-sm amz-button--secondary"
             onClick={() => history.push({
               pathname: '/sign-up',
               state: { from },

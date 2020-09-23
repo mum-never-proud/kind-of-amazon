@@ -18,9 +18,9 @@ const cors = require('cors');
 const app = new Express();
 
 const createPaymentValidator = (req, res, next) => {
-  const { name, amount } = req.body;
+  const { name, price } = req.body;
 
-  if (!name || !amount) {
+  if (!name || !price) {
     return res.boom.badRequest();
   }
 
@@ -32,7 +32,7 @@ app.use(boom());
 app.use(bodyParser.json());
 
 app.post('/.netlify/functions/app/create/payment', createPaymentValidator, (req, res) => {
-  const { name, amount } = req.body;
+  const { name, price } = req.body;
 
   stripe.paymentIntents.create({
     description: 'Amazon Clone service',
@@ -46,7 +46,7 @@ app.post('/.netlify/functions/app/create/payment', createPaymentValidator, (req,
         country: 'US',
       },
     },
-    amount: Math.floor(amount * 100),
+    amount: Math.floor(price * 100),
     currency: 'usd',
     payment_method_types: ['card'],
   })

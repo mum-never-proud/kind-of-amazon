@@ -67,6 +67,7 @@ module.exports = {
       actionCreators: path.resolve(__dirname, './src/action-creators'),
       actionTypes: path.resolve(__dirname, './src/action-types'),
       components: path.resolve(__dirname, './src/components'),
+      constants: path.resolve(__dirname, './src/constants'),
       contexts: path.resolve(__dirname, './src/contexts'),
       data: path.resolve(__dirname, './src/data'),
       layouts: path.resolve(__dirname, './src/layouts'),

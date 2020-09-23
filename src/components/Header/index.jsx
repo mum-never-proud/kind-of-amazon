@@ -5,7 +5,7 @@ import { AiOutlineAmazon, AiOutlineShoppingCart, AiOutlineSearch } from 'react-i
 import { RiGhostFill } from 'react-icons/ri';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from 'contexts/User';
-import { CartContext } from 'contexts/Cart';
+import { ShopContext } from 'contexts/Shop';
 import { signOutUser } from 'actions/user';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
@@ -14,7 +14,7 @@ import Button from 'react-bootstrap/Button';
 import './style.css';
 
 const Header = () => {
-  const [{ selectedProducts, availableProducts }] = useContext(CartContext);
+  const [{ selectedProducts, availableProducts }] = useContext(ShopContext);
   const [{ user }, dispatch] = useContext(UserContext);
   const [searchText, setSearchText] = useState('');
   const [searchResult, setSearchResult] = useState([]);
@@ -24,6 +24,7 @@ const Header = () => {
   useEffect(() => {
     searchBoxRef.current.focus();
   }, []);
+
   useEffect(() => {
     if (searchText.length > 2) {
       setSearchResult(
@@ -36,7 +37,7 @@ const Header = () => {
   }, [searchText]);
 
   return (
-    <div className="nav-bar h-60 d-flex mb-5">
+    <div className="nav-bar h-60 d-flex mb-3">
       <Button
         aria-label="Back to Home"
         variant="link"
@@ -48,7 +49,7 @@ const Header = () => {
       <div className="nav-bar--search d-flex align-items-center">
         <InputGroup>
           <Form.Control
-            className="amz-input-text"
+            className="amz-input--text-default"
             name="search"
             type="text"
             ref={searchBoxRef}
@@ -56,7 +57,7 @@ const Header = () => {
             onChange={(ev) => setSearchText(ev.target.value)}
           />
           <InputGroup.Append>
-            <Button className="amz-button-primary" aria-label="Search Amazon">
+            <Button className="amz-button--primary" aria-label="Search Amazon">
               <AiOutlineSearch />
             </Button>
           </InputGroup.Append>
@@ -72,7 +73,7 @@ const Header = () => {
                   </div>
                 ))
               }
-              <div className="search-bar--result-footer text-center amz-text-xs text-info">
+              <div className="search-bar--result-footer text-center amz-text-sm text-info">
                 <RiGhostFill />
                 {' '}
                 Boo, you can&apos;t click on any result
@@ -86,7 +87,7 @@ const Header = () => {
         className="nav-bar--user-details nav-bar--anchor"
         onClick={() => (user ? signOutUser(dispatch)() : history.push('/sign-in'))}
       >
-        <div className="amz-text-xs color-grey">
+        <div className="amz-text-sm color-grey">
           Hello,
           {' '}
           {user ? user.name : 'Guest'}
@@ -100,7 +101,7 @@ const Header = () => {
         className="nav-bar--orders nav-bar--anchor"
         onClick={() => history.push('/orders')}
       >
-        <div className="amz-text-xs color-grey">Returns</div>
+        <div className="amz-text-sm color-grey">Returns</div>
         <div>& Orders</div>
       </Button>
       <Button
@@ -110,7 +111,7 @@ const Header = () => {
         tabIndex={0}
         onClick={() => history.push('/cart')}
       >
-        <span className="amz-text-xs">
+        <span className="amz-text-sm">
           {Object.values(selectedProducts).reduce((a, b) => a + b, 0)}
         </span>
         <AiOutlineShoppingCart />

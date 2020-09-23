@@ -1,11 +1,7 @@
 @import url(//db.onlinewebfonts.com/c/157c6cc36dd65b1b2adc9e7f3329c761?family=Amazon+Ember);
 
 @media (max-width: 1023px) {
-  .cart--items-info, .cart--form {
-    flex: 50;
-  }
-
-  .amz-button-primary {
+  .amz-button--primary {
     font-size: 14px !important;
   }
 }
@@ -13,12 +9,6 @@
 @media (max-width: 1023px) {
   .checkout {
     flex-direction: column-reverse;
-  }
-}
-
-@media (max-width: 1023px) {
-  .products {
-    justify-content: space-between !important;
   }
 }
 
@@ -31,11 +21,12 @@
 html, body {
   font-family: "Amazon Ember", Helvetica, Arial;
 }
-.amz-input-text--xs {
-  height: 31px;
+
+.amz-input--text-default--xs {
+  height: 30px;
 }
 
-.amz-input-text {
+.amz-input--text-default {
   border: 1px solid #a6a6a6;
   border-top-color: #949494;
   border-radius: 3px;
@@ -43,41 +34,45 @@ html, body {
   outline: 0;
 }
 
-.amz-input-text:focus {
+.amz-input--text-default:focus {
   border-color: #e77600;
   box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
   outline: 0;
 }
 
-.amz-text-xs {
+.amz-text-sm {
   font-size: 13px;
 }
 
-.amz-button-primary,
-.amz-button-primary:active,
-.amz-button-primary:focus,
-.amz-button-primary:hover {
+.amz-text-xs {
+  font-size: 10px;
+}
+
+.amz-button--primary,
+.amz-button--primary:active,
+.amz-button--primary:focus,
+.amz-button--primary:hover {
   background-color: #f0c14b !important;
   border-color: #a88734 #9c7e31 #846a29 !important;
   color: #111 !important;
   outline: 0;
 }
 
-.amz-button-secondary,
-.amz-button-secondary:active,
-.amz-button-secondary:focus,
-.amz-button-secondary:hover {
+.amz-button--secondary,
+.amz-button--secondary:active,
+.amz-button--secondary:focus,
+.amz-button--secondary:hover {
   background-color: #e7e9ec;
   border-color: #adb1b8 #a2a6ac #8d9096;
   color: #111;
   outline: 0;
 }
 
-.amz-button-secondary:hover, .amz-button-secondary:hover:active {
+.amz-button--secondary:hover, .amz-button--secondary:hover:active {
   border-color: #a2a6ac #979aa1 #82858a;
 }
 
-.amz-button-primary:focus {
+.amz-button--primary:focus {
   border-color: #e77600;
   box-shadow: 0 0 3px 2px rgba(228,121,17,.5);
 }
@@ -117,8 +112,4 @@ html, body {
 
 .color-grey {
   color: #ccc
-}
-
-.awssld__next, .awssld__prev {
-  top: 100px !important;
 }

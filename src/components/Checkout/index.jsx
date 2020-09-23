@@ -2,10 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { CartContext } from 'contexts/Cart';
+import { ShopContext } from 'contexts/Shop';
 import { UserContext } from 'contexts/User';
-import { emptyCart } from 'actions/cart';
-import { confirmOrder } from 'actions/user';
+import { emptyCart } from 'actions/shop';
 import CheckoutForm from 'components/CheckoutForm';
 import ProductCard from 'components/ProductCard';
 import computeCartTotal from 'utils/compute-cart-total';
@@ -14,7 +13,7 @@ import './style.css';
 const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 const Checkout = () => {
-  const [{ user }, dispatchUser] = useContext(UserContext);
+  const [{ user }] = useContext(UserContext);
 
   if (!user) {
     return (
@@ -27,10 +26,10 @@ const Checkout = () => {
     );
   }
 
-  const [{ availableProducts, selectedProducts }, dispatchCart] = useContext(CartContext);
+  const [{ availableProducts, selectedProducts }, dispatchCart] = useContext(ShopContext);
   const [products, setProducts] = useState(selectedProducts);
   const skus = Object.keys(products);
-  const amount = computeCartTotal(products, availableProducts);
+  const price = computeCartTotal(products, availableProducts);
 
   if (!skus.length) {
     return <Redirect to="/" />;
@@ -38,7 +37,7 @@ const Checkout = () => {
 
   return (
     <div className="checkout">
-      <div className="checkout--items mr-4">
+      <div className="checkout--items">
         <p className="lead">{Object.keys(selectedProducts).length === 0 ? 'Ordered Items' : 'Review Items'}</p>
         {
           skus.map((sku) => {
@@ -59,14 +58,13 @@ const Checkout = () => {
       <div className="checkout--form mt-5">
         <Elements stripe={stripePromise}>
           <CheckoutForm
-            amount={amount}
+            price={price}
             currency="$"
             user={user}
             selectedProducts={selectedProducts}
             onOrderComplete={(order) => {
               setProducts(order.products);
               emptyCart(dispatchCart)();
-              confirmOrder(dispatchUser)(order);
             }}
           />
         </Elements>

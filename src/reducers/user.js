@@ -1,23 +1,22 @@
 import {
-  AUTHENTICATE_USER_IN_PROGRESS,
+  AUTHENTICATE_USER_REQUEST,
   AUTHENTICATE_USER_FAILED,
   AUTHENTICATE_USER_SUCCESS,
-  REGISTER_USER_IN_PROGRESS,
+  REGISTER_USER_REQUEST,
   REGISTER_USER_FAILED,
-  SIGN_OUT,
-  ORDER_CONFIRMED,
+  SIGN_OUT_REQUEST,
 } from 'actionTypes';
 
 const userState = {
   isLoading: false,
   user: null,
   errorMessage: null,
-  pastOrders: [],
 };
+
 const userReducer = (state, action) => {
   switch (action.type) {
-    case AUTHENTICATE_USER_IN_PROGRESS:
-    case REGISTER_USER_IN_PROGRESS:
+    case AUTHENTICATE_USER_REQUEST:
+    case REGISTER_USER_REQUEST:
       return {
         ...state,
         isLoading: true,
@@ -35,13 +34,8 @@ const userReducer = (state, action) => {
         isLoading: false,
         ...action.payload,
       };
-    case SIGN_OUT:
+    case SIGN_OUT_REQUEST:
       return userState;
-    case ORDER_CONFIRMED:
-      return {
-        ...state,
-        pastOrders: [].concat(action.payload, state.pastOrders),
-      };
     default:
       return state;
   }

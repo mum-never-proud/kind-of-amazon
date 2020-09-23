@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UserProvider from 'contexts/User';
-import CartProvider from 'contexts/Cart';
+import ShopProvider from 'contexts/Shop';
 import App from './app';
 
 ReactDOM.render((
   <UserProvider>
-    <CartProvider>
+    <ShopProvider>
       <App />
-    </CartProvider>
+    </ShopProvider>
   </UserProvider>
 ), document.getElementById('app'));

@@ -63,12 +63,12 @@ const Signup = ({ from }) => {
             <h4>Create Account</h4>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="name">Name</Form.Label>
+            <Form.Label className="amz-text-sm font-weight-bold" htmlFor="name">Name</Form.Label>
             <Form.Control
               id="name"
               name="name"
               type="text"
-              className="amz-text-xs amz-input-text  amz-input-text--xs"
+              className="amz-text-sm amz-input--text-default  amz-input--text-default--xs"
               isInvalid={invalidFields.name}
               ref={formRefs.name}
               onChange={updateUserDetails}
@@ -78,12 +78,12 @@ const Signup = ({ from }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="email">Email</Form.Label>
+            <Form.Label className="amz-text-sm font-weight-bold" htmlFor="email">Email</Form.Label>
             <Form.Control
               id="email"
               name="email"
               type="text"
-              className="amz-text-xs amz-input-text  amz-input-text--xs"
+              className="amz-text-sm amz-input--text-default  amz-input--text-default--xs"
               isInvalid={invalidFields.email}
               ref={formRefs.email}
               onChange={updateUserDetails}
@@ -93,12 +93,12 @@ const Signup = ({ from }) => {
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="amz-text-xs font-weight-bold" htmlFor="password">Password</Form.Label>
+            <Form.Label className="amz-text-sm font-weight-bold" htmlFor="password">Password</Form.Label>
             <Form.Control
               id="password"
               name="password"
               type="password"
-              className="amz-text-xs amz-input-text  amz-input-text--xs"
+              className="amz-text-sm amz-input--text-default  amz-input--text-default--xs"
               isInvalid={invalidFields.password}
               ref={formRefs.password}
               onChange={updateUserDetails}
@@ -112,7 +112,7 @@ const Signup = ({ from }) => {
               block
               type="submit"
               variant="light"
-              className="amz-text-xs amz-button-primary"
+              className="amz-text-sm amz-button--primary"
               disabled={isLoading}
             >
               {
