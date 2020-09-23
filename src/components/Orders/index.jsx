@@ -22,6 +22,22 @@ const Orders = () => {
   const { orders, isFetchingOrders, errorMessage } = ordersState;
   const today = new Date();
 
+  useEffect(() => {
+    if (user) {
+      setOrdersState({ ...ordersState, isFetchingOrders: true });
+      getOrders(user.objectId)
+        .then((pastOrders) => setOrdersState({
+          isFetchingOrders: false,
+          orders: pastOrders,
+        }))
+        .catch(({ message }) => setOrdersState({
+          ...ordersState,
+          isFetchingOrders: false,
+          errorMessage: message,
+        }));
+    }
+  }, [user]);
+
   if (!user) {
     return (
       <Redirect
@@ -32,20 +48,6 @@ const Orders = () => {
       />
     );
   }
-
-  useEffect(() => {
-    setOrdersState({ ...ordersState, isFetchingOrders: true });
-    getOrders(user.objectId)
-      .then((pastOrders) => setOrdersState({
-        isFetchingOrders: false,
-        orders: pastOrders,
-      }))
-      .catch(({ message }) => setOrdersState({
-        ...ordersState,
-        isFetchingOrders: false,
-        errorMessage: message,
-      }));
-  }, []);
 
   if (isFetchingOrders) {
     return (
