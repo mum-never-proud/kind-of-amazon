@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from 'contexts/User';
 import Alert from 'react-bootstrap/Alert';
-import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
@@ -43,7 +42,7 @@ const Signin = ({ from }) => {
   useEffect(() => formRefs.email.current.focus(), []);
 
   return (
-    <Row className="min-vh-100 d-flex flex-column justify-content-center align-items-center">
+    <div className="min-vh-100 d-flex flex-column justify-content-center align-items-center">
       {
         errorMessage && (
           <Alert variant="danger" className="w-350">
@@ -158,7 +157,7 @@ const Signin = ({ from }) => {
           Currently login using Phone is not supported.
         </Toast.Body>
       </Toast>
-    </Row>
+    </div>
   );
 };
 
