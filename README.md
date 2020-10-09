@@ -2,7 +2,7 @@
 
 # kind-of-amazon
 
-A Kind of Amazon (Amazon clone) with basic Features and Payment gateway integration.
+A Kind of Amazon (Amazon clone) with Payment gateway integration.
 
 ## Note
 
